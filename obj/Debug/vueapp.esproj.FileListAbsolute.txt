@@ -1,2 +1,0 @@
-C:\Users\wmoore\Documents\Vue\maximizing\Maximizing\vueapp\obj\Debug\vueapp.esproj.SuggestedBindingRedirects.cache
-C:\Users\wmoore\Documents\Vue\maximizing\Maximizing\vueapp\obj\Debug\vueapp.esproj.CoreCompileInputs.cache
