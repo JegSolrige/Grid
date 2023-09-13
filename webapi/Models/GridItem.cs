@@ -18,10 +18,10 @@ namespace Models
     {
         public GridItemViewModel(GridItem gridItem)
         {
-            Type = gridItem.Type;
+            Type = gridItem.Type.ToString();
         }
 
-        public GridItemType Type { get; set; } = GridItemType.None;
+        public string Type { get; set; } = GridItemType.None.ToString();
     }
 
     public enum GridItemType

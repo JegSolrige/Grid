@@ -6,20 +6,9 @@
 
         <div v-if="post" class="content">
             <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Temp. (C)</th>
-                        <th>Temp. (F)</th>
-                        <th>Summary</th>
-                    </tr>
-                </thead>
                 <tbody>
-                    <tr v-for="forecast in post" :key="forecast.date">
-                        <td>{{ forecast.date }}</td>
-                        <td>{{ forecast.temperatureC }}</td>
-                        <td>{{ forecast.temperatureF }}</td>
-                        <td>{{ forecast.summary }}</td>
+                    <tr v-for="(row, index) in grid" :key="index">
+                        <td v-for="(item, index) in row" :key="index">{{ item.type }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -34,7 +23,7 @@
         data() {
             return {
                 loading: false,
-                post: null
+                grid: null
             };
         },
         created() {
@@ -51,7 +40,7 @@
                 this.post = null;
                 this.loading = true;
 
-                fetch('weatherforecast')
+                fetch('Grid')
                     .then(r => r.json())
                     .then(json => {
                         this.post = json;
