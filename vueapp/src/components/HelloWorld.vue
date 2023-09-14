@@ -4,11 +4,11 @@
             Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationvue">https://aka.ms/jspsintegrationvue</a> for more details.
         </div>
 
-        <div v-if="post" class="content">
+        <div v-if="grid" class="content">
             <table>
                 <tbody>
-                    <tr v-for="(row, index) in grid" :key="index">
-                        <td v-for="(item, index) in row" :key="index">{{ item.type }}</td>
+                    <tr v-for="row in hashedGrid" :key="row.key">
+                        <td v-for="item in row" :key="item.key">{{ item.type }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -18,6 +18,7 @@
 
 <script lang="js">
     import { defineComponent } from 'vue';
+    import { sha1 } from 'object-hash';
 
     export default defineComponent({
         data() {
@@ -25,6 +26,11 @@
                 loading: false,
                 grid: null
             };
+        },
+        computed: {
+            hashedGrid() {
+                return this.grid.items.map(row => ({ ...row.map(item => ({ ...item, key: sha1(item)})), key: sha1(row)}));
+            },
         },
         created() {
             // fetch the data when the view is created and the data is
@@ -37,13 +43,13 @@
         },
         methods: {
             fetchData() {
-                this.post = null;
+                this.grid = null;
                 this.loading = true;
 
                 fetch('Grid')
                     .then(r => r.json())
                     .then(json => {
-                        this.post = json;
+                        this.grid = json;
                         this.loading = false;
                         return;
                     });

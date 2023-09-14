@@ -5,11 +5,11 @@ namespace Models
         public Grid()
         {
             var items = new Dictionary<Tuple<int, int>, GridItem>();
-            for (int y = 0; y < 10; y++)
+            for (int y = 1; y < 10; y++)
             {
                 var newGridItem = new GridItem();
 
-                for (int x = 0; x < 10; x++)
+                for (int x = 1; x < 10; x++)
                 {
                     items.TryGetValue(Tuple.Create(x - 1, y), out GridItem? leftGridItem);
                     if (leftGridItem != null)
@@ -37,10 +37,10 @@ namespace Models
         public GridViewModel(Grid grid)
         {
             Items = new List<List<GridItemViewModel>>();
-            for (int y = 0; y < 10; y++)
+            for (int y = 1; y < 10; y++)
             {
                 var row = new List<GridItemViewModel>();
-                for (int x = 0; x < 10; x++)
+                for (int x = 1; x < 10; x++)
                 {
                     var gridItem = grid.Items.GetValueOrDefault(Tuple.Create(x, y), new GridItem());
                     row.Add(new GridItemViewModel(gridItem));
