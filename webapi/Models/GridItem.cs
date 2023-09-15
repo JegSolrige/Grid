@@ -12,6 +12,7 @@ namespace Models
         public bool IsQuantityIncreased { get; set; } = false;
         public bool IsQualityIncreased { get; set; } = false;
         public bool IsFertilized { get; set; } = false;
+        public bool IsSpeedIncreased { get; set; } = false;
     }
 
     public class GridItemViewModel

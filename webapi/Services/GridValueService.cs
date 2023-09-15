@@ -9,9 +9,11 @@ namespace Services
     }
     public class GridValueService : IGridValueService
     {
-        public Grid HandleWatered(Grid grid) { }
-        public Grid Handle(Grid grid) { }
-        public Grid HandleWatered(Grid grid) { }
+        public void HandleWatered(GridItem gridItem) { }
+        public void HandleWeeded(GridItem gridItem) { }
+        public void HandleQuantity(GridItem gridItem) { }
+        public void HandleQuality(GridItem gridItem) { }
+        public void HandleSpeed(GridItem gridItem) { }
 
         public double CalculateGridValue(Grid grid)
         {

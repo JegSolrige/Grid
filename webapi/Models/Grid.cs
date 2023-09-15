@@ -66,7 +66,12 @@ namespace Models
             return grid;
         }
 
+        public static void affectGridItems()
+        {
+
+        }
         // some kind of method that takes in a function and executes that function on each of the grid items?
+
 
         public Dictionary<(int,int),GridItem> Items { get; set; } = new Dictionary<(int, int), GridItem>();
     }
